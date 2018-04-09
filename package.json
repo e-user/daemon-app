@@ -2,32 +2,35 @@
   "name": "daemon-app",
   "version": "0.1.0",
   "description": "Daemon Client",
-  "main": "src/main.js",
+  "main": "src/main/index.js",
   "repository": "https://github.com/e-user/daemon-app",
   "author": "Alexander Kahl <npm@sodosopa.io>",
   "license": "Apache-2.0",
   "private": false,
   "devDependencies": {
     "electron": "^1.8.4",
-    "electron-builder": "^20.8.1"
+    "electron-builder": "^20.8.1",
+    "electron-webpack": "^2.0.1",
+    "webpack": "^4.5.0"
   },
   "build": {
     "appId": "io.sodosopa.daemon",
-    "productName": "Daemon Client",
     "copyright": "Copyright © 2018 Alexander Kahl <ak@sodosopa.io>",
     "linux": {
+      "category": "Utility;TextEditor;",
       "target": [
         "rpm"
       ]
     },
     "mac": {
-      "category": ""
+      "category": "public.app-category.developer-tools"
     }
   },
   "scripts": {
-    "start": "electron .",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack",
+    "dist": "yarn compile && electron-builder",
+    "dist:dir": "yarn dist -- --dir -c.compression=store -c.mac.identity=null",
     "postinstall": "electron-builder install-app-deps"
   }
 }
