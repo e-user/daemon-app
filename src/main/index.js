@@ -7,7 +7,10 @@ let mainWindow
 
 function createMainWindow () {
   // Create the browser window.
-  const window = new BrowserWindow({ show: false})
+  const window = new BrowserWindow({
+    show: false,
+    icon: 'static/daemon.png'
+  })
   
   window.loadURL('http://localhost:8080')
   window.setMenu(null)
