@@ -8,8 +8,9 @@ let mainWindow
 function createMainWindow () {
   // Create the browser window.
   const window = new BrowserWindow({
+    title: 'Daemon Client',
     show: false,
-    icon: 'static/daemon.png'
+    icon: `${__static}/daemon-256.png`
   })
   
   window.loadURL('http://localhost:8080')
